@@ -1,24 +1,17 @@
-# README
+# Challah Back! App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Have you ever had an insane craving for delicious home-cooked Jewish food, but coudn't find a recipe that was up to snuff? Well, look no further! 
 
-Things you may want to cover:
+The _Challah Back_ app is your #1 resource for finding and sharing tasty dishes that actually taste like the food your dear bubby would make you. 
 
-* Ruby version
+## Screenshots
 
-* System dependencies
+## Technologies Used
 
-* Configuration
+- Ruby on Rails &hearts;
 
-* Database creation
+## Getting Started with _Challah Back!_ App
 
-* Database initialization
+## Unsolved problems
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Future Features ("Ice Box")
