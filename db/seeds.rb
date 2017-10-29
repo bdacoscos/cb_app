@@ -9,7 +9,7 @@
 User.destroy_all
 
 user = User.create([
-  { name: 'Janice', location: 'Jersey City, NJ'},
-  { name: 'Harry', location: 'Austin, TX'},
-  { name: 'Rhys', location: 'Los Angeles, CA'}
+  { name: 'Janice', location: 'Jersey City, NJ', image: },
+  { name: 'Harry', location: 'Austin, TX', image: },
+  { name: 'Rhys', location: 'Los Angeles, CA', image: }
 ])
