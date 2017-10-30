@@ -8,11 +8,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/recipes/all', to: 'recipes#all'
-  
+
   resources :recipes do
     resources :comments, only: [:create, :destroy], shallow: true
   end
   get '/dashboard', to: 'users#show'
   
-
 end
