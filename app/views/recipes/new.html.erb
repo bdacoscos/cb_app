@@ -1,27 +1,41 @@
 <h1>New Recipe</h1>
-
-<% form_for @recipe do |f| %>
-
-  <div class="field">
-    <% f.label :name %>
-    <% f.text_field :name %>
-  </div>  
-  <div class="field">
-    <% f.label :image %>
-    <% f.file_field :name %>
-  </div>  
-  <div class="field">
-    <% f.label :description %>
-    <% f.text_field :description %>
-  </div>  
-  <div class="field">
-    <% f.label :ingredients %>
-    <% f.text_field :ingredients %>
-  </div>  
-  <div class="field">
-    <% f.label :instructions %>
-    <% f.text_field :instructions %>
-  </div>  
-  <div class="actions"><%= f.submit %></div>  
+<% if @recipe.errors.any? %>
+  <div class="error_messages">
+    <h2>Form is invalid</h2>
+    <ul>
+      <% for message in @recipe.errors.full_messages %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+
+<%= form_for @recipe do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>  
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>  
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>  
+  <div class="field">
+    <%= f.label :ingredients %>
+    <%= f.text_field :ingredients %>
+  </div>  
+  <div class="field">
+    <%= f.label :instructions %>
+    <%= f.text_field :instructions %>
+  </div>  
+  <div class="actions">
+    <%= f.submit "Save New Recipe"%>
+  </div>  
+
+<% end %>
+
 
