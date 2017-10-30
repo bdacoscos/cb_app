@@ -18,6 +18,8 @@
         <% if current_user %>
           Welcome, <%= current_user.name %>
           &nbsp;&nbsp;|&nbsp;&nbsp;
+          <%= link_to 'Profile', user_path(current_user) %>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
           <%= link_to 'Log Out', session_path('whatever'), method: :delete %>
         <% else %>
           <%= link_to 'Log In', login_path %>
