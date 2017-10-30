@@ -13,13 +13,28 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     if @recipe.save
       flash[:notice] = "Recipe saved!"
-      redirect_to root_path
+      redirect_to recipes_path
     else
       render :new
     end
   end
   
   def show
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update_attributes(recipe_params)
+      flash[:notice] = "Changes saved!"
+      redirect_to recipe_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   private

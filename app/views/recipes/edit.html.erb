@@ -1,4 +1,4 @@
-<h1>New Recipe</h1>
+<h1>Edit Recipe</h1>
 
 <% if @recipe.errors.any? %>
   <div class="error_messages">
@@ -34,7 +34,7 @@
     <%= f.text_field :instructions %>
   </div>  
   <div class="actions">
-    <%= f.submit "Save New Recipe"%>
+    <%= f.submit "Save Changes" %>
   </div>  
 
 <% end %>
