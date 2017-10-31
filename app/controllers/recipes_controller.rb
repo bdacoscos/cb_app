@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:index, :show, :all]
 
   def all
     @recipes = Recipe.all
