@@ -29,20 +29,36 @@
           <%= link_to "Add New Recipe", new_recipe_path %>
         </div>
         <div class="col s12">
-          <div class="card small">
-            <div class="card-image max-width">
-              <%#= image_tag current_user.recipes.first.image.url %>
-              <span class="card-title"><%#= current_user.recipes.first.name %></span>
-            </div>
-            <div class="card-content">  
-              <%#= current_user.recipes.first.description %>
-            </div>
-            <div class="card-action">
-              <%#= link_to current_user.recipes.first.name, recipe_path(recipe) %>
-            </div>
-          </div>
-          <div class="card small"></div>
-          <div class="card small"></div>
+
+          <% if current_user.recipes.any? %>
+            <% all_recipes = current_user.recipes.all %>
+            <% random_recipe = all_recipes[rand(all_recipes.length)] %>
+            
+              <% for recipe in current_user.recipes %>
+
+              <div class="card small">
+                <div class="card-image max-width">
+                  <%= image_tag random_recipe.image.url %>
+                  <span class="card-title"><%= random_recipe.name %></span>
+                </div>
+                <div class="card-content">  
+                  <%= random_recipe.description %>
+                </div>
+                <div class="card-action">
+                  <%= link_to random_recipe.name, recipe_path(recipe) %>
+                </div>
+              </div>
+            <% end %>
+              
+          <% else %>
+
+            <p>You have no recipes yet!</p>
+
+          <% end %>
+
+
+            <div class="card small"></div>
+            <div class="card small"></div>
         </div>
         <div class="col s12">
           <h3>Your Top 3 Recipes</h3>
