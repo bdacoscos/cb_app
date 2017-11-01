@@ -4,12 +4,12 @@
 
     <div class="col s4">
         <h2>Profile</h2>
-        <div class="col s12 user-pic">
-          <%= image_tag current_user.image.url(:medium) %>
+        <div class="col s12">
+          <%= image_tag current_user.image.url(:medium), class: "max-width" %>
         </div>
         <div class="col s12">
-          <%= current_user.name %>
-          <%= current_user.location %>
+          <p><%= current_user.name %></p>
+          <p><%= current_user.location %></p>
         </div>
         <div class="col s12">
           <h5>Recipe &hearts;'s</h5>
@@ -30,8 +30,15 @@
         </div>
         <div class="col s12">
           <div class="card small">
-            <div class="card-image">
+            <div class="card-image max-width">
               <%= image_tag current_user.recipes.first.image.url %>
+              <span class="card-title"><%= current_user.recipes.first.name %></span>
+            </div>
+            <div class="card-content">  
+              <%= current_user.recipes.first.description %>
+            </div>
+            <div class="card-action">
+              <%#= link_to current_user.recipes.first.name, recipe_path(recipe) %>
             </div>
           </div>
           <div class="card small"></div>

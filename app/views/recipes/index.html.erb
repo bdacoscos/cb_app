@@ -4,7 +4,7 @@
     <div class="col s4">
 
         <div class="col s12">
-          <%= image_tag current_user.image.url(:medium) %>
+          <%= image_tag current_user.image.url(:medium), class: "max-width" %>
         </div>
         <div class="col s12">
           <%= current_user.name %>
