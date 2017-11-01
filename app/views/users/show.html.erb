@@ -1,5 +1,4 @@
 <div class="container">
-  
   <div class="row">
 
     <div class="col s4">
@@ -17,58 +16,61 @@
         <div class="col s12">
           <span>&hearts;</span>
         </div>
-
     </div>
 
-      <div class="col s8">
-
-        <div class="col s12">
-          <h3>Your Recipes</h3>
-          <%= link_to "View All", recipes_path %>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <%= link_to "Add New Recipe", new_recipe_path %>
-        </div>
-        <div class="col s12">
-
-          <% if current_user.recipes.any? %>
-            <% all_recipes = current_user.recipes.all %>
-            <% random_recipe = all_recipes[rand(all_recipes.length)] %>
-            
-              <% for recipe in current_user.recipes %>
-
-              <div class="card small">
+    <div class="col s8">
+      <div class="col s12">
+        <h3>Your Recipes</h3>
+        <%= link_to "View All", recipes_path %>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to "Add New Recipe", new_recipe_path %>
+      </div>
+      <div class="col s12">
+        <% if current_user.recipes.any? %>
+          <% shuffled_recipes = current_user.recipes.all.shuffle %>
+          <% if shuffled_recipes.count > 3 %>
+            <% random_recipes = shuffled_recipes[0 .. 2] %>
+            <% random_recipes.each do |recipe| %>
+              <div class="card small col s4">
                 <div class="card-image max-width">
-                  <%= image_tag random_recipe.image.url %>
-                  <span class="card-title"><%= random_recipe.name %></span>
+                  <%= image_tag recipe.image.url %>
+                  <span class="card-title"><%= recipe.name %></span>
                 </div>
                 <div class="card-content">  
-                  <%= random_recipe.description %>
+                  <%= recipe.description %>
                 </div>
                 <div class="card-action">
-                  <%= link_to random_recipe.name, recipe_path(recipe) %>
+                  <%= link_to recipe.name, recipe_path(recipe) %>
                 </div>
               </div>
             <% end %>
-              
           <% else %>
-
-            <p>You have no recipes yet!</p>
-
+            <% shuffled_recipes.each do |recipe| %>
+              <div class="card small col s4">
+                <div class="card-image max-width">
+                  <%= image_tag recipe.image.url %>
+                  <span class="card-title"><%= recipe.name %></span>
+                </div>
+                <div class="card-content">  
+                  <%= recipe.description %>
+                </div>
+                <div class="card-action">
+                  <%= link_to recipe.name, recipe_path(recipe) %>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-
-
-            <div class="card small"></div>
-            <div class="card small"></div>
-        </div>
-        <div class="col s12">
-          <h3>Your Top 3 Recipes</h3>
-        </div>
-        <div class="col s12">
-          <div class="card small"></div>
-          <div class="card small"></div>
-          <div class="card small"></div>
-        </div>
-
+        <% else %>
+          <p>You have no recipes yet!</p>
+        <% end %>
       </div>
+      <div class="col s12">
+        <h3>Your Top 3 Recipes</h3>
+      </div>
+      <div class="col s12">
+      </div>
+        
+    </div>
+
   </div>
 </div>
