@@ -1,10 +1,12 @@
-<h1>All the recipes, ever</h1>
+<div class="container">
+  <h1>All the recipes, ever</h1>
 
-<ul>
-  <% @recipes.each do |recipe| %>
-    <li>
-      <%= link_to recipe.name, recipe_path(recipe) %>
-    </li>
-  <% end %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <%= link_to recipe.name, recipe_path(recipe) %>
+      </li>
+    <% end %>
 
-</ul>
+  </ul>
+</div>
