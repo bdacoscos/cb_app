@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params.require(:comment).permit(:content))
     @comment.recipe_id = params[:recipe_id]
+    @comment.user = current_user
     @comment.save
     redirect_to recipe_path(params[:recipe_id])
   end

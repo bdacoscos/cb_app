@@ -3,11 +3,20 @@
 
   <%= link_to "Edit Recipe", edit_recipe_path %>
 
-  <div class="">
+  <div>
     <%= image_tag @recipe.image.url, class: "max-width" %>
   </div>
 
-  <div class="row">
+  <h3>Like this recipe!</h3>
+  <% if Like.exists?(user: current_user, recipe: @recipe) %>
+    <i class="material-icons">favorite</i>
+  <% else %>
+    <%= link_to recipe_likes_path(@recipe), method: :post do %>
+      <i class="material-icons">favorite_border</i>
+    <% end %>
+  <% end %>
+
+  <div class="row"> 
     <div class="col s2">
       <h3>Ingredients</h3>
       <%= @recipe.ingredients %>
