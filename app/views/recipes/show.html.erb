@@ -1,80 +1,77 @@
 <div class="container">
-  <h1>Single Recipe</h1>
+   <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag @recipe.image.url, class: "max-width" %>
+            <span class="card-title">
+              <h3><%= @recipe.name %></h3>
+              <div>
+                <i class="small material-icons">create</i>
+                <%= link_to "Edit Recipe", edit_recipe_path %>
+              </div>
 
-  <%= link_to "Edit Recipe", edit_recipe_path %>
+              <div> 
+                <% like = Like.find_by(user: current_user, recipe: @recipe) %>
+                  <% if like %>
+                    <%= link_to like_path(like), method: :delete do%>
+                      <i class="small material-icons">favorite</i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to recipe_likes_path(@recipe), method: :post do %>
+                      <i class="small material-icons">favorite_border</i>
+                    <% end %>
+                  <% end %>
+                <span>Like Recipe</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    <div>
 
-  <div>
-    <%= image_tag @recipe.image.url, class: "max-width" %>
-  </div>
 
-  <h3>Like this recipe!</h3>
-  <% like = Like.find_by(user: current_user, recipe: @recipe) %>
-  <% if like %>
-    <%= link_to like_path(like), method: :delete do%>
-      <i class="material-icons">favorite</i>
-    <% end %>
-  <% else %>
-    <%= link_to recipe_likes_path(@recipe), method: :post do %>
-      <i class="material-icons">favorite_border</i>
-    <% end %>
-  <% end %>
-
-
-  <div class="row"> 
-    <div class="col s2">
+  <div class="row">
+    
+    <div class="col s3">
       <h3>Ingredients</h3>
       <%= @recipe.ingredients %>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col s8">
-      <h3><%= @recipe.name %></h3>
+    <div class="col s6">
+      <div>
+        <h3>About Recipe</h3>
+        <%= @recipe.description %>
+      </div>
+      <div>
+        <h3>Instructions</h3>
+        <%= @recipe.instructions %>
+      </div>
     </div>
-    <div class="col s8">
-      <h3>About Recipe</h3>
-      <%= @recipe.description %>
-    </div>
-    <div class="col s8">
-      <h3>Instructions</h3>
-      <%= @recipe.instructions %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s2">
+    
+    <div class="col s3">
       <h3>Comments</h3>
-
       <%= form_for [@recipe, @comment] do |c| %>
-        <% if @comment.errors.any? %>
-          <div class="error_messages">
-            <h2>Form is invalid</h2>
-            <ul>
-              <% for message in @comment.errors.full_messages %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
+        <div class="field">
+          <%= c.label :content %>
+          <%= c.text_field :content%>
+        </div>
+        <button class="btn waves-effect waves-light validate" type="submit" name="action">Submit<i class="material-icons right">send</i>
+        </button>
+      <% end %>
+      
+      <% @recipe.comments.each do |c| %>
+        <div><%= image_tag c.user.image.url(:thumb) %></div>
+        <%= c.user.name %>
+        <%= c.created_at.strftime("%m/%d/%y") %>
+        <div><%= c.content %></div>
+        <% if current_user == c.user %>
+          <%= link_to comment_path(c), method: :delete do %>
+            <div>Delete comment</div>
+          <% end %>
         <% end %>
-          <div class="field">
-            <%= c.label :content %>
-            <%= c.text_field :content%>
-          </div>
-          <button class="btn waves-effect waves-light validate" type="submit" name="action">Submit<i class="material-icons right">send</i>
-          </button>
       <% end %>
-
-
-
-      <% @recipe.comments.each do |comment| %>
-        <% comment = Comment.find_by(user: current_user, recipe: @recipe) %>
-        <%= link_to "Delete comment", comment_path(comment), method: :delete %>  
-        <div><%= image_tag current_user.image.url(:thumb) %></div>
-        <%= current_user.name %>
-        <%= comment.created_at.strftime("%m/%d/%y") %>
-        <div><%= comment.content %></div>
-      <% end %>
-    </div>
+  
+    </div>  
 
   </div>
 </div>

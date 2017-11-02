@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_recipes = User.find(params[:id]).recipes.all.ordered_by_likes
   end
 
   private

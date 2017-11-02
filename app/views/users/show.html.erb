@@ -2,20 +2,21 @@
   <div class="row">
 
     <div class="col s4">
-        <h2>Profile</h2>
-        <div class="col s12">
-          <%= image_tag current_user.image.url(:medium) %>
-        </div>
-        <div class="col s12">
-          <p><%= current_user.name %></p>
-          <p><%= current_user.location %></p>
-        </div>
-        <div class="col s12">
-          <h5>Recipe &hearts;'s</h5>
-        </div>
-        <div class="col s12">
-          <span>&hearts;</span>
-        </div>
+      <div class="col s12">
+        <h2><%= current_user.name %></h2>
+      </div>
+      <div class="col s12">
+        <p><%= current_user.location %></p>
+      </div>
+      <div class="col s12">
+        <%= image_tag current_user.image.url(:medium) %>
+      </div>
+      <div class="col s12">
+        <h5>Recipe &hearts;'s</h5>
+      </div>
+      <div class="col s12">
+        <span>&hearts;</span>
+      </div>
     </div>
 
     <div class="col s8">
@@ -36,9 +37,6 @@
                   <%= image_tag recipe.image.url %>
                   <span class="card-title"><%= recipe.name %></span>
                 </div>
-                <div class="card-content">  
-                  <%= recipe.description %>
-                </div>
                 <div class="card-action">
                   <%= link_to recipe.name, recipe_path(recipe) %>
                 </div>
@@ -50,9 +48,6 @@
                 <div class="card-image max-width">
                   <%= image_tag recipe.image.url %>
                   <span class="card-title"><%= recipe.name %></span>
-                </div>
-                <div class="card-content">  
-                  <%= recipe.description %>
                 </div>
                 <div class="card-action">
                   <%= link_to recipe.name, recipe_path(recipe) %>
@@ -68,6 +63,36 @@
         <h3>Your Top 3 Recipes</h3>
       </div>
       <div class="col s12">
+        <% if current_user.recipes.any? %>
+          <% if @user_recipes.length > 3 %>
+            <% top_three = @user_recipes[0 .. 2] %>
+            <% top_three.each do |recipe| %>
+              <div class="card small col s4">
+                <div class="card-image max-width">
+                  <%= image_tag recipe.image.url %>
+                  <span class="card-title"><%= recipe.name %></span>
+                </div>
+                <div class="card-action">
+                  <%= link_to recipe.name, recipe_path(recipe) %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <% @user_recipes.each do |recipe| %>
+              <div class="card small col s4">
+                <div class="card-image max-width">
+                  <%= image_tag recipe.image.url %>
+                  <span class="card-title"><%= recipe.name %></span>
+                </div>
+                <div class="card-action">
+                  <%= link_to recipe.name, recipe_path(recipe) %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>Nothing here. Add some recipes!</p>
+        <% end %>      
       </div>
         
     </div>

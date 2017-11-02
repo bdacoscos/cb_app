@@ -4,11 +4,13 @@
   
     <div class="col s4">
       <div class="col s12">
-        <%= image_tag current_user.image.url(:medium), class: "max-width" %>
+        <h2><%= current_user.name %></h2>
       </div>
       <div class="col s12">
-        <%= current_user.name %>
-        <%= current_user.location %>
+        <p><%= current_user.location %></p>
+      </div>
+      <div class="col s12">
+        <%= image_tag current_user.image.url(:medium) %>
       </div>
       <div class="col s12">
         <h5>Recipe &hearts;'s</h5>
@@ -18,31 +20,27 @@
       </div>
     </div>
 
-      <div class="col s8">
 
-        <div class="col s12">
-          <h3><%= current_user.name %>'s Recipes</h3>
-          <%= link_to "Add New Recipe", new_recipe_path %>
-        </div>
-        <div class="col s12">
-          <% all_recipes = current_user.recipes.all %>
-          <% all_recipes.each do |recipe| %> 
-            <div class="card small col s4">
-              <div class="card-image max-width">
-                <%= image_tag recipe.image.url %>
-                <span class="card-title"><%= recipe.name %></span>
-              </div>
-              <div class="card-content">  
-                <%= recipe.description %>
-              </div>
-              <div class="card-action">
-                <%= link_to recipe.name, recipe_path(recipe) %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
+    <div class="col s8">
+      <div class="col s12">
+        <h3><%= current_user.name %>'s Recipes</h3>
+        <%= link_to "Add New Recipe", new_recipe_path %>
       </div>
+      <div class="col s12">
+        <% all_recipes = current_user.recipes.all %>
+        <% all_recipes.each do |recipe| %> 
+          <div class="card small col s4">
+            <div class="card-image max-width">
+              <%= image_tag recipe.image.url %>
+              <span class="card-title"><%= recipe.name %></span>
+            </div>
+            <div class="card-action">
+              <%= link_to recipe.name, recipe_path(recipe) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
   </div>
 </div>
