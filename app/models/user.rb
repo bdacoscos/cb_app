@@ -9,5 +9,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments, dependent: :destroy
 
+  def total_likes
+    Like.joins(:recipe).where('recipes.user_id = ?', self.id).count
+  end
 
 end

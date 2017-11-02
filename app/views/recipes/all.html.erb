@@ -1,12 +1,19 @@
 <div class="container">
-  <h1>All the recipes, ever</h1>
-
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <li>
-        <%= link_to recipe.name, recipe_path(recipe) %>
-      </li>
-    <% end %>
-
-  </ul>
+  <div class="row">
+    <h1>Explore All Recipes</h1>
+    <div class="col s12">
+        <% @recipes.each do |recipe| %>
+          <div class="card small col s4">
+            <div class="card-image max-width">
+              <%= image_tag recipe.image.url %>
+              <span class="card-title"><%= recipe.name %></span>
+            </div>
+            <div class="card-action">
+              <%= link_to recipe.name, recipe_path(recipe) %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  
+  </div>
 </div>
