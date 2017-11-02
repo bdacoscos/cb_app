@@ -8,13 +8,17 @@
   </div>
 
   <h3>Like this recipe!</h3>
-  <% if Like.exists?(user: current_user, recipe: @recipe) %>
-    <i class="material-icons">favorite</i>
+  <% like = Like.find_by(user: current_user, recipe: @recipe) %>
+  <% if like %>
+    <%= link_to like_path(like), method: :delete do%>
+      <i class="material-icons">favorite</i>
+    <% end %>
   <% else %>
     <%= link_to recipe_likes_path(@recipe), method: :post do %>
       <i class="material-icons">favorite_border</i>
     <% end %>
   <% end %>
+
 
   <div class="row"> 
     <div class="col s2">
@@ -52,21 +56,25 @@
             </ul>
           </div>
         <% end %>
-        <div class="field">
-          <%= c.label :content %>
-          <%= c.text_field :content%>
-        </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i>
-        </button>
-
+          <div class="field">
+            <%= c.label :content %>
+            <%= c.text_field :content%>
+          </div>
+          <button class="btn waves-effect waves-light validate" type="submit" name="action">Submit<i class="material-icons right">send</i>
+          </button>
       <% end %>
 
-      <p>
-        <% @recipe.comments.each do |comment| %>
-          <%= comment.content %>
-        <% end %>
-      </p>
 
+
+      <% @recipe.comments.each do |comment| %>
+        <% comment = Comment.find_by(user: current_user, recipe: @recipe) %>
+        <%= link_to "Delete comment", comment_path(comment), method: :delete %>  
+        <div><%= image_tag current_user.image.url(:thumb) %></div>
+        <%= current_user.name %>
+        <%= comment.created_at.strftime("%m/%d/%y") %>
+        <div><%= comment.content %></div>
+      <% end %>
     </div>
+
   </div>
 </div>
