@@ -21,6 +21,19 @@
    font-family: 'Berkshire Swash', cursive;
  }
 
+.large-font {
+  font-size: 9rem;
+
+}
+
+.medium {
+  font-size: 3em;
+}
+
+ .smaller {
+   font-size: 2em;
+ }
+
 
 /***************************************************
   LAYOUT
@@ -39,7 +52,12 @@
 
 #home {
   top: 200px;
-  left: 0;
+  left: 200px;
+}
+
+#login-new {
+  top: 100px;
+  left: 200px;
 }
 
 /***************************************************
@@ -47,8 +65,61 @@
 *******************************************/
 .black-box {
   color: white;
-
   background: rgba(0, 0, 0, 0.7);
   padding: 10px;
+}
 
+.white-box {
+  color: black;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+}
+
+
+.space {
+  margin: 10px;
+}
+
+.space-between {
+  margin: 0px 2px;
+}
+
+.space-top-bottom {
+  margin: 20px 0;
+}
+
+.smaller-width {
+  width: 200px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.xlarge {
+  max-width: 1000px;
+}
+
+.xlarge-height {
+  height: 600px;
+}
+
+.same-height {
+  height: 200px;
+}
+
+.same-width {
+  width: 300px;
+}
+
+.object-fit-fill {
+  object-fit: fill;
+}
+
+.no-margin {
+  margin: 0 auto;
+}
+
+#total-likes {
+  height: 300px;
 }

@@ -2,13 +2,16 @@
    <div class="row">
       <div class="col s12">
         <div class="card">
-          <div class="card-image">
-            <%= image_tag @recipe.image.url, class: "max-width" %>
+          <div class="card-image x-large">
+            <img class="xlarge xlarge-height" src=<%= @recipe.image.url %>>
             <span class="card-title">
-              <h3><%= @recipe.name %></h3>
+              <h3 class="black-box"><%= @recipe.name %></h3>
+
               <div>
-                <i class="small material-icons">create</i>
-                <%= link_to "Edit Recipe", edit_recipe_path %>
+                <%= link_to edit_recipe_path do %>
+                  <i class="small material-icons">create</i>
+                <% end %>
+                <span class="blue-text">Edit Recipe</span>
               </div>
 
               <div> 
@@ -22,9 +25,9 @@
                       <i class="small material-icons">favorite_border</i>
                     <% end %>
                   <% end %>
-                <span>Like Recipe</span>
+                <span class="blue-text ">Like Recipe</span>
+              </div>
 
-            </span>
           </div>
         </div>
       </div>

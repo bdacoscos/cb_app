@@ -13,27 +13,27 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="grey lighten-4">
     <nav>
     <div class="nav-wrapper cyan darken-4">
       <div class="container">
-        <%= link_to 'CookBook', root_path %>
+        <a href="/" class="fancify smaller space">CookBook</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li>
+          <li class="space-between">
             <% if current_user %>
-              Welcome, <%= current_user.name %>!
+              Hello, <%= current_user.name %>!
           </li>
-          <li>
+          <li class="space-between">
               <%= link_to 'Profile', user_path(current_user) %>
           </li>
-          <li>
+          <li class="space-between">
               <%= link_to 'Log Out', session_path('whatever'), method: :delete %>
           </li>
             <% else %>
-          <li>
+          <li class="space-between">
             <%= link_to 'Log In', login_path %>
           </li>
-          <li>
+          <li class="space-between">
               <%= link_to 'Sign Up', new_user_path %>
           </li>
             <% end %>

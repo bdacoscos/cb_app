@@ -1,16 +1,27 @@
-<div class="container">
-  <h1>Log In</h1>
+<img class="position-rel max-width" src="https://i.imgur.com/4WuU30p.jpg">
 
-  <p id="alert"><%= alert %></p>
-  <%= form_tag sessions_path do %>
-    <div class="field">
-      <%= label_tag :email %>
-      <%= text_field_tag :email, params[:email] %>
+<div class="container">
+  <div class="container position-abs" id="login-new">
+    <div class="container white-box">
+      <div class="row">
+        <div class="col s12">
+          <h1 class="center-align">Log In</h1>
+          <span id="alert"><%= alert %></span>
+            <%= form_tag sessions_path do %>
+              <div class="field">
+                <%= label_tag :email %>
+                <%= text_field_tag :email, params[:email] %>
+              </div>
+              <div class="field">
+                <%= label_tag :password %>
+                <%= password_field_tag :password %>
+              </div>
+              <button class="btn waves-effect waves-light red accent-1" type="submit" name="action">
+                Log In
+              <i class="material-icons right">send</i>
+            </button>
+            <% end %>
+        </div>
+      </div>
     </div>
-    <div class="field">
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </div>
-    <div class="actions"><%= submit_tag "Log In" %>
-  <% end %>
-</div>
+  </div>
