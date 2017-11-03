@@ -6,6 +6,8 @@ The _CookBook_ app is your #1 resource for sharing and discovering tasty dishes.
 
 ## Screenshots
 *********
+![Landing Page](https://imgur.com/gXLJBHu)
+![]()
 
 
 ## Technologies Used
@@ -18,14 +20,23 @@ The _CookBook_ app is your #1 resource for sharing and discovering tasty dishes.
 ## Getting Started with _CookBook_
 *********
 
-Link to my Trello board for this project: [https://trello.com/b/wBdj8Z36/cookbook-app](https://trello.com/b/wBdj8Z36/cookbook-app)
+If you'd like to try out my app, check out my deployed website:
+https://cookbook-app-project.herokuapp.com/
 
-Link to the app, deployed on Heroku:   [https://shrouded-oasis-16099.herokuapp.com/](https://shrouded-oasis-16099.herokuapp.com/)
+
+And if you're interested in gaining insight into my workflow, take a look at my Trello board for this project: [https://trello.com/b/wBdj8Z36/cookbook-app](https://trello.com/b/wBdj8Z36/cookbook-app)
 
 
 ## Unsolved problems
 *********
+- Having issues with form validation (one can create an empty recipe, with no way to access the empty file.)
 
 
 ## Future Features ("Ice Box")
 *********
+
+I have many features to improve my app, but my top three would be:
+
+1. Making the app mobile-responsive. 
+2. Allowing users to see other's profiles.
+3. Allowing users to save other's recipes in a collection.
