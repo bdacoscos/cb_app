@@ -41,8 +41,8 @@
         <% all_recipes.each do |recipe| %>
           <div class="col s12 m4">
             <div class="card">
-              <div class="card-image same-height">
-                <img class="same-height same-width" src=<%= recipe.image.url %>>
+              <div class="card-image">
+                <img class="same-width" src=<%= recipe.image.url %>>
               </div>
               <div class="card-action">
                 <%= link_to recipe.name, recipe_path(recipe) %>

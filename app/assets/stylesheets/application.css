@@ -61,7 +61,7 @@
 }
 
 /***************************************************
-  
+  IMAGES/DIVS
 *******************************************/
 .black-box {
   color: white;
@@ -109,7 +109,7 @@
 }
 
 .same-width {
-  width: 300px;
+  width: 333px;
 }
 
 .object-fit-fill {
@@ -122,4 +122,9 @@
 
 #total-likes {
   height: 300px;
+}
+
+.option {
+  font-size: 2rem;
+  padding-bottom: 20px;
 }

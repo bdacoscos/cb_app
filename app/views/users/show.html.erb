@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row">
-
     <div class="col s3 space-top-bottom">
-     
         <div class="col s12 space-top-bottom">
           <img class="same-height" src=<%= current_user.image.url %>>
         </div>
@@ -22,17 +20,14 @@
             </div>
           </div>
         </div>
-
     </div>
-
     <div class="col s9">
-      <div>
+      <div class="col s12">
         <h1 class="left-align fancify medium">
           Your Recipes
         </h1>
       </div>
-
-      <div class="right-align">
+      <div class="col s12 right-align">
         <a class="waves-effect waves-light btn red accent-1 space" href="/recipes/">
           View All
         </a>
@@ -40,84 +35,86 @@
           Add New Recipe
         </a>
       </div>
-
       <div class="row">
-        <% if current_user.recipes.any? %>
-          <% shuffled_recipes = current_user.recipes.all.shuffle %>
-          <% if shuffled_recipes.count > 3 %>
-            <% random_recipes = shuffled_recipes[0 .. 2] %>
-            <% random_recipes.each do |recipe| %>
-              <div class="col s12 m4">
-                <div class="card">
-                  <div class="card-image same-height">
-                    <img class="same-height same-width" src=<%= recipe.image.url %>>
-                  </div>
-                  <div class="card-action">
-                    <%= link_to recipe.name, recipe_path(recipe) %>
+        <div class="col s12">
+          <% if current_user.recipes.any? %>
+            <% shuffled_recipes = current_user.recipes.all.shuffle %>
+            <% if shuffled_recipes.count > 3 %>
+              <% random_recipes = shuffled_recipes[0 .. 2] %>
+              <% random_recipes.each do |recipe| %>
+                <div class="col s12 m4">
+                  <div class="card">
+                    <div class="card-image">
+                      <img class="same-width" src=<%= recipe.image.url %>>
+                    </div>
+                    <div class="card-action">
+                      <%= link_to recipe.name, recipe_path(recipe) %>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
+            <% else %>
+              <% shuffled_recipes.each do |recipe| %>
+                <div class="col s12 m4">
+                  <div class="card">
+                    <div class="card-image">
+                      <img class="same-width" src=<%= recipe.image.url %>>
+                    </div>
+                    <div class="card-action">
+                      <%= link_to recipe.name, recipe_path(recipe) %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           <% else %>
-            <% shuffled_recipes.each do |recipe| %>
-              <div class="col s12 m4">
-                <div class="card">
-                  <div class="card-image same-height">
-                    <img class="same-height same-width" src=<%= recipe.image.url %>>
-                  </div>
-                  <div class="card-action">
-                    <%= link_to recipe.name, recipe_path(recipe) %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+            <p>You have no recipes yet!</p>
           <% end %>
-        <% else %>
-          <p>You have no recipes yet!</p>
-        <% end %>
+        </div>
       </div>
-
-
       <div class="col s9">
-        <h1 class="left-align fancify medium">
-          Your Top 3 Recipes
-        </h1>
+        <div class="col s12">
+          <h1 class="left-align fancify medium">
+            Your Top 3 Recipes
+          </h1>
+        </div>
       </div>
-
       <div class="row">
-        <% if current_user.recipes.any? %>
-          <% if @user_recipes.length > 3 %>
-            <% top_three = @user_recipes[0 .. 2] %>
-            <% top_three.each do |recipe| %>
-              <div class="col s12 m4">
-                <div class="card">
-                  <div class="card-image same-height">
-                    <img class="same-height" src=<%= recipe.image.url %>>
-                  </div>
-                  <div class="card-action">
-                    <%= link_to recipe.name, recipe_path(recipe) %>
+        <div class="col s12">
+          <% if current_user.recipes.any? %>
+            <% if @user_recipes.length > 3 %>
+              <% top_three = @user_recipes[0 .. 2] %>
+              <% top_three.each do |recipe| %>
+                <div class="col s12 m4">
+                  <div class="card">
+                    <div class="card-image">
+                      <img class="same-width" src=<%= recipe.image.url %>>
+                    </div>
+                    <div class="card-action">
+                      <%= link_to recipe.name, recipe_path(recipe) %>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
+            <% else %>
+              <% @user_recipes.each do |recipe| %>
+                <div class="col s12 m4">
+                  <div class="card">
+                    <div class="card-image">
+                      <img class="same-width" src=<%= recipe.image.url %>>
+                    </div>
+                    <div class="card-action">
+                      <%= link_to recipe.name, recipe_path(recipe) %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           <% else %>
-            <% @user_recipes.each do |recipe| %>
-              <div class="col s12 m4">
-                <div class="card">
-                  <div class="card-image same-height">
-                    <img class="same-height" src=<%= recipe.image.url %>>
-                  </div>
-                  <div class="card-action">
-                    <%= link_to recipe.name, recipe_path(recipe) %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        <% else %>
-          <p>Nothing here. Add some recipes!</p>
-        <% end %>      
-      </div>
+            <p>Nothing here. Add some recipes!</p>
+          <% end %>  
+        </div>    
+      </div> 
      </div>   
   </div>
 </div>
