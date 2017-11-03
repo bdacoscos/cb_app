@@ -66,7 +66,7 @@
 .black-box {
   color: white;
   background: rgba(0, 0, 0, 0.7);
-  padding: 10px;
+  padding: 2px 20px;
 }
 
 .white-box {
@@ -97,7 +97,7 @@
 }
 
 .xlarge {
-  max-width: 1000px;
+  width: 1000px;
 }
 
 .xlarge-height {
@@ -121,10 +121,11 @@
 }
 
 #total-likes {
-  height: 300px;
+  height: 250px;
 }
 
 .option {
   font-size: 2rem;
-  padding-bottom: 20px;
+  padding-left: 20px;
 }
+

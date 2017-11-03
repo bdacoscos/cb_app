@@ -1,42 +1,47 @@
-<div class="container">
-  <h1>Edit Recipe</h1>
-
-  <% if @recipe.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @recipe.errors.full_messages %>
-          <li><%= message %></li>
+<div class="container position-abs white-box" id="login-new">
+  <div class="container">
+    <div class="row">
+      <h1 class="center-align fancify">Edit Recipe</h1>
+        <span id="alert"><%= alert %></span>
+        <% if @recipe.errors.any? %>
+          <div class="error_messages">
+            <h2>Form is invalid</h2>
+            <ul>
+              <% for message in @recipe.errors.full_messages %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+        <%= form_for @recipe do |f| %>
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>  
+          <div class="field">
+            <span>Upload image: </span>
+            <%= f.file_field :image %>
+          </div>
+          <div class="field">
+            <%= f.label :description %>
+            <%= f.text_field :description %>
+          </div>     
+          <div class="field">
+            <%= f.label :ingredients %>
+            <%= f.text_field :ingredients %>
+          </div>  
+          <div class="field">
+            <%= f.label :instructions %>
+            <%= f.text_field :instructions %>
+          </div>  
+          <div>
+            <button class="btn waves-effect waves-light red accent-1" type="submit" name="action">
+              Save Changes
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+          <% end %>
     </div>
-  <% end %>
-
-  <%= form_for @recipe do |f| %>
-
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>  
-    <div class="field">
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-    </div>  
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-    </div>  
-    <div class="field">
-      <%= f.label :ingredients %>
-      <%= f.text_field :ingredients %>
-    </div>  
-    <div class="field">
-      <%= f.label :instructions %>
-      <%= f.text_field :instructions %>
-    </div>  
-    <div class="actions">
-      <%= f.submit "Save Changes" %>
-    </div>  
-
-  <% end %>
+  </div>
 </div>
+  
