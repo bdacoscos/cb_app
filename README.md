@@ -7,9 +7,9 @@ The _CookBook_ app is your #1 resource for sharing and discovering tasty dishes.
 ## Screenshots
 *********
 
-![Landing Page](https://i.imgur.com/gXLJBHu.jpg)
-![All Recipes View](https://i.imgur.com/VLL0Rqd.png)
-![User Dashboard](https://i.imgur.com/ENZpng7.png)
+![Landing Page](https://i.imgur.com/1JIJcm9.jpg)
+![All Recipes View](https://i.imgur.com/cQeoCxw.png)
+![User Dashboard](https://i.imgur.com/A8RoL1P.png)
 ![Single Recipe View, pt. 1](https://i.imgur.com/ypCjGZH.png)
 ![Single Recipe View, pt. 2](https://i.imgur.com/FHPuYCd.png)
 
