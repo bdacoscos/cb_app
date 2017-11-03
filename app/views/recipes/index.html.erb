@@ -1,13 +1,11 @@
 <div class="container">
   <div class="row">
-  
     <div class="col s3 space-top-bottom">
-     
         <div class="col s12 space-top-bottom">
-          <img class="same-height" src=<%= current_user.image.url %>>
+          <img class="max-width" src=<%= current_user.image.url %>>
         </div>
         <div class="col s12">
-          <h2 class="fancify medium"><%= current_user.name %></h2>
+          <h2 class="fancify medium less-margin"><%= current_user.name %></h2>
         </div>
         <div class="col s12">
           <p><%= current_user.location %></p>
@@ -15,45 +13,43 @@
         <div class="row">
           <div class="col s12">
             <div id="total-likes" class="card-panel teal">
-              <span class="white-text">
+              <span class="white-text center-align">
                 <h6 class="fancify smaller">Your Total Recipe &hearts;'s</h6>
                 <h1 class="fancify large-font no-margin"><%= current_user.total_likes %></h1>
               </span>
             </div>
           </div>
         </div>
-
     </div>
-
     <div class="col s9">
-      <div>
-        <h1 class="left-align fancify medium">All recipes</h1>
+      <div class="col s12 valign-wrapper position-rel">
+        <h1 class="left-align fancify medium">
+          All recipes
+        </h1>
+        <span class="position-abs user-options">
+          <a class="waves-effect waves-light btn red accent-1 space" href="/recipes/new/">
+            Add New Recipe
+          </a>
+        </span>
       </div>
-
-      <div class="right-align">
-        <a class="waves-effect waves-light btn red accent-1 space" href="/recipes/new/">
-          Add New Recipe
-        </a>
-      </div>
-
       <div class="row">
-        <% all_recipes = current_user.recipes.all %>
-        <% all_recipes.each do |recipe| %>
-          <div class="col s12 m4">
-            <div class="card">
-              <div class="card-image">
-                <img class="same-width" src=<%= recipe.image.url %>>
-              </div>
-              <div class="card-action">
-                <%= link_to recipe.name, recipe_path(recipe) %>
+        <div class="col s12">
+          <% all_recipes = current_user.recipes.all %>
+          <% all_recipes.each do |recipe| %>
+            <div class="col s12 m4">
+              <div class="card">
+                <div class="card-image">
+                  <img class="same-width" src=<%= recipe.image.url %>>
+                </div>
+                <div class="card-action">
+                  <%= link_to recipe.name, recipe_path(recipe) %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-
     </div>
-
   </div>
 </div>
 

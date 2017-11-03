@@ -120,6 +120,10 @@
   margin: 0 auto;
 }
 
+.less-margin {
+  margin: 5px 0;
+}
+
 #total-likes {
   height: 350px;
 }
@@ -127,4 +131,9 @@
 .option {
   font-size: 2rem;
   padding-left: 20px;
+}
+
+.user-options {
+  bottom: 0;
+  right: 0;
 }
